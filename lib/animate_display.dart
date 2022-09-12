@@ -22,15 +22,15 @@ class _AnimationPageState extends State<AnimationPage>
    duration: Duration(seconds: 5),
    vsync: this);
 
-   final curvedAnimation = CurvedAnimation(
-       parent: animController!,
-       curve: Curves.bounceIn,
-       reverseCurve: Curves.easeOut,
-   );
+   // final curvedAnimation = CurvedAnimation(
+   //     parent: animController!,
+   //     curve: Curves.bounceIn,
+   //     reverseCurve: Curves.easeOut,
+   // );
 
    animation = Tween<double>(
        begin: 0,
-       end: 2 * math.pi).animate(animController!)
+       end: 2 * math.pi).chain(CurveTween(curve: Curves.bounceIn)).animate(animController!)
       ..addListener(() {
           setState(() {});
    })..addStatusListener((status) {
